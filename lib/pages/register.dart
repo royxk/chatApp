@@ -2,24 +2,27 @@ import 'package:chatapp/components/my_button.dart';
 import 'package:chatapp/components/my_text_field.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   final void Function() onPressed;
 
-  const LoginPage({super.key, required this.onPressed});
+  const RegisterPage({super.key, required this.onPressed});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   // email textfield
   final email = TextEditingController();
 
   // password textfield
   final passwords = TextEditingController();
 
-  // sign in button
-  void signIn() {}
+  // confirm password textfield
+  final confirmpasswords = TextEditingController();
+
+  // register button
+  void signUp() {}
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +35,12 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 const SizedBox(height: 150),
                 // logo
-                Icon(Icons.chat, size: 100, color: Colors.black),
+                const Icon(Icons.people, size: 100, color: Colors.black),
 
                 const SizedBox(height: 50),
                 // welcome text
-                Text(
-                  'Welcome to Chat App',
+                const Text(
+                  'Let\'s get started',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -60,12 +63,18 @@ class _LoginPageState extends State<LoginPage> {
 
                 const SizedBox(height: 20),
 
+                // password textfield
+                MyTextField(
+                    controller: confirmpasswords,
+                    hintText: 'confirm password',
+                    obscureText: true),
+
+                const SizedBox(height: 20),
+
                 // bottom row
-                Container(
-                  child: MyButton(
-                    onTap: () {},
-                    text: 'Login',
-                  ),
+                MyButton(
+                  onTap: () {},
+                  text: 'Sign Up',
                 ),
 
                 const SizedBox(height: 20),
@@ -74,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Don\'t have an account?'),
+                    const Text('Already have an account?'),
                     TextButton(
                       onPressed: widget.onPressed,
                       child: const Text('Register now',
@@ -91,5 +100,6 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+    ;
   }
 }
